@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+}
+
+.logo img {
+    height: 80px;
+    width: 80px;
+}
+
+a{
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: black;
+}
+
+a:hover {
+    color: #828282; /* Cambia el color del enlace al pasar el mouse */
+}
+
+.logogin {
+    position:sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.fondo-movimiento {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      animation: cambiarFondo 15s infinite;
+      background-size: cover;
+      background-position: center;
+}
+
+@keyframes cambiarFondo {
+    0%   { background-image: url('imgs/WhatsApp\ Image\ 2025-06-05\ at\ 13.53.09.jpeg'); }
+    33%  { background-image: url('imgs/WhatsApp\ Image\ 2025-06-05\ at\ 13.53.09\ \(1\).jpeg'); }
+    66%  { background-image: url('imgs/WhatsApp\ Image\ 2025-06-05\ at\ 13.53.09\ \(2\).jpeg'); }
+    100% { background-image: url('imgs/WhatsApp\ Image\ 2025-06-05\ at\ 13.53.09.jpeg'); }
+}
+
+.contenido-principio {
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+    color: white;
+    text-align: left;
+    padding: 142px 20px;
+    margin: 0 125px 125px 0px ;
+}
+
+.info-2 {
+    display: grid; /* Usa grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
+    gap: 20px; /* Espacio entre las columnas y filas */
+    max-width: 1200px; /* Limita el ancho de la cuadrícula */
+    margin: auto; /* Centra la cuadrícula */
+    padding: 20px 20px; /* Espacio lateral */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.info-3 {
+    max-width: 450px; /* Limita el ancho de la cuadrícula */
+    margin: 10px auto; /* Centra la cuadrícula */
+    padding: 20px 20px; /* Espacio lateral */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.info-2 article:nth-child(3) {
+    grid-column: span 2; /* Ocupa dos columnas */
+}
+
+.art-info {
+    background-color:rgb(255, 255, 255);
+    padding: 20px; /* Relleno interior */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 0px 33px rgba(16, 106, 252, 0.607); /* sombra suave */
+    max-width: 1200px; /* Limita el ancho del artículo */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total */
+}
+
+.form-art-info {
+    grid-column: span 2; /* para que ocupe las 2 columnas */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0px 0px 33px rgba(16, 106, 252, 0.607); /* sombra suave */
+}
+
+.form-art-info form {
+    width: 100%;
+    max-width: 600px;
+    
+}
+
+footer {
+    background-color: #272727; /* Fondo oscuro */
+    color: white; /* Color del texto en el footer */
+    padding: 10px 0; /* Espacio en el pie de página */
+    text-align: center; /* Centra el texto */
+    width: 100%; /* Ocupa todo el ancho */
+    margin-top: auto; /* Empuja el pie de página al fondo */
+    margin-bottom: 0px;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="stilos.css">
+</head>
+
+<body>
+    <div class="logogin">
+        <div class="logo">
+            <img src="imgs/logopred.jpg">
+        </div>
+        <div>
+            <nav>
+                <a href="login.html">Log in</a>
+            </nav>
+        </div>
+    </div>
+    <div class="fondo-movimiento"></div>
+    <div class="contenido-principio">
+        <h1>Nombre de la Cooperativa</h1>
+        <p>Introducción sobre la cooperativa</p>
+        <a href="#registro"><button>Asociate</button></a>
+        <button>Consulta</button>
+    </div>
+    <div class="info-2">
+        <article class="art-info">
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi, suscipit sequi! Laborum temporibus blanditiis repellendus quia eos voluptas, deleniti ab culpa ducimus quasi, veniam iste? Aliquid natus sapiente esse ducimus?</p>
+        </article>
+        <article class="art-info">
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, alias deleniti obcaecati quibusdam, voluptatum cumque eos minima quasi fugit hic rerum quisquam velit dolorem vero possimus placeat assumenda omnis exercitationem.</p>
+        </article>
+        <article class="art-info">
+            <h2>Lorem ipsum</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, sunt reiciendis rem ipsa ab quibusdam at sapiente aperiam quo minima tenetur sed, eaque odit. Nam reiciendis illo id enim sint.</p>
+        </article>
+    </div>
+    <div class="info-3" id="registro">
+        <article class="form-art-info">
+<h1>Solicitud para asociarse</h1><br><br>
+        <form action="escribe.php" method="POST" enctype="multipart/form-data">
+        <label for="imagen">Foto de perfil</label><br>
+        <input type="file" name="uploadedFile"><br><br>
+
+        <label for="nombre">Nombre y Apellido</label><br>
+        <input type="text" name="nombre" id="nombre" placeholder="Kevin Arevalo"><br><br>
+
+        <label for="nombre">Fecha de Nacimiento</label><br>
+        <input type="text" name="nombre" id="nombre" placeholder="dd/mm/aaaa"><br><br>
+
+        <label for="nombre">Número de teléfono</label><br>
+        <input type="text" name="nombre" id="nombre" placeholder="099999999"><br><br>
+
+        <label for="email">Email</label><br>
+        <input type="text" name="email" id="email" placeholder="kevinarevalo@ejemplo.com"><br><br>
+
+        <label for="contrasenia">Contraseña</label><br>
+        <input type="text" name="contrasenia" id="contrasenia" placeholder="1234"><br><br>
+
+        <input type="submit" name="uploadBtn" value="Enviar">
+    </form>
+    </article>
+    </div>
+    <footer>
+        <p>Info Contacto footer</p>
+    </footer>
+</body>
+</html>
