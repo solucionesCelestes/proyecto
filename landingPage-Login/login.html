@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
     <link rel="stylesheet" href="stilos.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+<body style="background-color: #292f33b5; z-index: 10;">
     <div class="logogin">
         <div class="logo">
-            <img src="imgs/logopred.jpg">
+            <img src="imgs/logo.png">
         </div>
+        <a href="landing.html">Inicio</a></div>
     </div>
     <div class="fondo-movimiento"></div>
-    <div class="info-3" id="registro">
+    <div class="fondo-overlay2"></div>
+    <div class="info-3">
         <article class="form-art-info">
 <h1>Inicio de Sesion</h1><br><br>
         <form action="escribe.php" method="POST" enctype="multipart/form-data">
@@ -24,9 +29,12 @@
         <label for="contrasenia">Contraseña</label><br>
         <input type="text" name="contrasenia" id="contrasenia" placeholder="1234"><br><br>
 
-        <input type="submit" name="uploadBtn" value="Enviar"><a href="landing.html#registro">Asociate</a><br><br>
+        <div style="display:flex; gap: 68px; justify-content: center;">
+            <input type="submit" name="uploadBtn" value="Enviar">
+            <a class="boton"href="landing.html#registro">Asociate</a>
+        </div>
+        <br><br>
     </form>
-        <a href="landing.html"><button>Volver al Inicio</button></a>
     </article>
     </div>
     <footer>
