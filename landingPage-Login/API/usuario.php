@@ -22,7 +22,7 @@ class Usuario
 	// Obtener todos los usuarios
 	public function getAllUsuarios()
 	{
-		$query = "SELECT * FROM usuario";
+		$query = "SELECT * FROM usuarios";
 		$result = mysqli_query($this->conn, $query);
 		$usuarios = [];
 		while($row = mysqli_fetch_assoc($result)) {
@@ -33,7 +33,7 @@ class Usuario
 	// Obtener un usuario por ID
 	public function getUsuarioById($id)
 	{
-		$query = "SELECT * FROM usuario WHERE id = $id ";
+		$query = "SELECT * FROM usuarios WHERE ID = $id ";
 		$result = mysqli_query($this->conn, $query);
 		$usuario = mysqli_fetch_assoc($result);
 		return $usuario;
@@ -41,23 +41,29 @@ class Usuario
 	// Agregar un nuevo usuario
 	public function addUsuario($data)
 	{
-		if(!isset($data['usr_name']) || !isset($data['imagen']) || !isset($data['usr_email']) || !isset($data['usr_pass'])) {
+		if(!isset($data['Nombre']) || !isset($data['FotoPerfil']) || !isset($data['Email']) || !isset($data['Contrasena']) || !isset($data['Apellido']) || !isset($data['FechaNacimiento']) || !isset($data['Telefono']) || !isset($data['Admin']) || !isset($data['FechaRegistro'])) {
 			http_response_code(400);
 			echo json_encode(["error" => "Datos incompletos"]);
 		}else{
-			$usr_name = $data['usr_name'];
-			$usr_email = $data['usr_email'];
-			$usr_pass = password_hash($data['usr_pass'], PASSWORD_DEFAULT);
+			$usr_name = $data['Nombre'];
+			$usr_email = $data['Email'];
+			$usr_apellido = $data['Apellido'];
+			$usr_fechanac = $data['FechaNacimiento'];
+			$usr_tel = $data['Telefono'];
+			$usr_accept = $data['Aceptado'];
+			$usr_admin = $data['Admin'];
+			$usr_fechareg = $data['FechaRegistro'];
+			$usr_pass = password_hash($data['Contrasena'], PASSWORD_DEFAULT);
 			// Procesar imagen base64
-			$img_data = $data['imagen'];
+			$img_data = $data['FotoPerfil'];
 			if (preg_match('/^data:image\/(\w+);base64,/', $img_data, $type)) {
 				$img_data = substr($img_data, strpos($img_data, ',') + 1);
 				$img_data = base64_decode($img_data);
 				$ext = strtolower($type[1]);
 				$img_name = uniqid() . "." . $ext;
-				$img_path = __DIR__ . "/uploads/" . $img_name;
-				if (!is_dir(__DIR__ . "/uploads/")) {
-					mkdir(__DIR__ . "/uploads/", 0777, true);
+				$img_path = __DIR__ . "/fotosPerfiles/" . $img_name;
+				if (!is_dir(__DIR__ . "/fotosPerfiles/")) {
+					mkdir(__DIR__ . "/fotosPerfiles/", 0777, true);
 				}
 				if (file_put_contents($img_path, $img_data) === false) {
 					http_response_code(500);
@@ -69,7 +75,7 @@ class Usuario
 				echo json_encode(["error" => "Formato de imagen inválido"]);
 				exit;
 			}
-			$query = "INSERT INTO usuario (usr_name, usr_email, usr_pass, imagen) VALUES ('$usr_name', '$usr_email', '$usr_pass', '$img_name')";
+			$query = "INSERT INTO usuario (Nombre, Email, Apellido, FechaNacimiento, Telefono, Aceptado, Admin, FechaRegistro, Contrasena, FotoPerfil) VALUES ('$usr_name', '$usr_email', '$usr_apellido', '$usr_fechanac', '$usr_tel', '$usr_accept', '$usr_admin', '$usr_fechareg', '$usr_pass', '$img_data')";
 			$result = mysqli_query($this->conn, $query);
 			if($result){
 				return true;
@@ -83,7 +89,7 @@ class Usuario
 	public function loginUsuario($usr_email, $usr_pass)
 	{
 		//echo "email: $usr_email, pass: $usr_pass";
-		$query = "SELECT * FROM usuario WHERE usr_email = '$usr_email'";
+		$query = "SELECT * FROM usuarios WHERE Email = '$usr_email'";
 		$result = mysqli_query($this->conn, $query);
 		if(mysqli_num_rows($result) > 0){
 			$usuario = mysqli_fetch_assoc($result);
@@ -100,10 +106,10 @@ class Usuario
 	// Actualizar un usuario por ID
 	public function updateUsuario($id, $data)
 	{
-		$usr_name = $data['usr_name'];
-		$usr_email = $data['usr_email'];
-		$usr_pass = $data['usr_pass'];
-		$query = "UPDATE usuario SET usr_name = '$usr_name', usr_email = '$usr_email', usr_pass = '$usr_pass' WHERE id = ".$id;
+		$usr_name = $data['Nombre'];
+		$usr_email = $data['Email'];
+		$usr_pass = $data['Contrasena'];
+		$query = "UPDATE usuario SET usr_name = '$usr_name', usr_email = '$usr_email', usr_pass = '$usr_pass' WHERE ID = ".$id;
 		$result = mysqli_query($this->conn, $query);
 		if($result){
 			return true;
@@ -114,7 +120,7 @@ class Usuario
 	// Eliminar un usuario por ID
 	public function deleteUsuario($id)
 	{
-		$query = "DELETE FROM usuario WHERE id = ".$id;
+		$query = "DELETE FROM usuarios WHERE ID = ".$id;
 		$result = mysqli_query($this->conn, $query);
 		if($result){
 			return true;

@@ -45,7 +45,7 @@ switch ($method) {
 			}
 		}elseif ($endpoint === '/login') {
 			$data = json_decode(file_get_contents('php://input'), true);
-			$result = $usuarioObj->loginUsuario($data['usr_email'], $data['usr_pass']);
+			$result = $usuarioObj->loginUsuario($data['Email'], $data['Contrasena']);
 			if ($result != false) {
 				echo json_encode(['success' => true, 'usuario' => $result]);
 			} else {
