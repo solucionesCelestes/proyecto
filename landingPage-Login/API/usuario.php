@@ -106,7 +106,10 @@ class Usuario
 		$usr_name = $data['Nombre'];
 		$usr_email = $data['Email'];
 		$usr_pass = $data['Contrasena'];
-		$query = "UPDATE usuario SET usr_name = '$usr_name', usr_email = '$usr_email', usr_pass = '$usr_pass' WHERE ID = ".$id;
+		$usr_apellido = $data['Apellido'];
+		$usr_fechanac = $data['FechaNacimiento'];
+		$usr_tel = $data['Telefono'];
+		$query = "UPDATE usuario SET Nombre = '$usr_name', Email = '$usr_email', Contrasena = '$usr_pass', Apellido = '$usr_apellido', FechaNacimiento = '$usr_fechanac', Telefono = '$usr_tel' WHERE ID = ".$id;
 		$result = mysqli_query($this->conn, $query);
 		if($result){
 			return true;
