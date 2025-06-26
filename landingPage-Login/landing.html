@@ -51,27 +51,27 @@
     <div class="info-3" id="registro">
         <article class="form-art-info">
 <h1>Solicitud para asociarse</h1><br><br>
-        <form action="escribe.php" method="POST" enctype="multipart/form-data">
-        <label for="imagen">Foto de perfil</label><br>
-        <input type="file" name="fotoPerfil"><br><br>
+        <form id= "registro" method="POST" enctype="multipart/form-data">
+        <label for="FotoPerfil">Foto de perfil</label><br>
+        <input type="file" name="FotoPerfil"><br><br>
 
-        <label for="nombre">Nombre</label><br>
-        <input type="text" name="nombre" id="nombre" placeholder="Kevin"><br><br>
+        <label for="Nombre">Nombre</label><br>
+        <input type="text" name="Nombre" id="Nombre" placeholder="Kevin"><br><br>
 
-        <label for="nombre">Apellido</label><br>
-        <input type="text" name="apellido" id="apellido" placeholder="Arevalo"><br><br>
+        <label for="Apellido">Apellido</label><br>
+        <input type="text" name="Apellido" id="Apellido" placeholder="Arevalo"><br><br>
 
-        <label for="nombre">Fecha de Nacimiento</label><br>
-        <input type="text" name="fechaNac" id="fechaNac" placeholder="dd/mm/aaaa"><br><br>
+        <label for="FechaNacimiento">Fecha de Nacimiento</label><br>
+        <input type="text" name="FechaNacimiento" id="FechaNacimiento" placeholder="dd/mm/aaaa"><br><br>
 
-        <label for="nombre">Número de teléfono</label><br>
-        <input type="text" name="numTel" id="numTel" placeholder="099999999"><br><br>
+        <label for="Telefono">Número de teléfono</label><br>
+        <input type="text" name="Telefono" id="Telefono" placeholder="099999999"><br><br>
 
-        <label for="email">Email</label><br>
-        <input type="text" name="email" id="email" placeholder="kevinarevalo@ejemplo.com"><br><br>
+        <label for="Email">Email</label><br>
+        <input type="text" name="Email" id="Email" placeholder="kevinarevalo@ejemplo.com"><br><br>
 
-        <label for="contrasenia">Contraseña</label><br>
-        <input type="text" name="contrasenia" id="contrasenia" placeholder="1234"><br><br>
+        <label for="Contrasena">Contraseña</label><br>
+        <input type="text" name="Contrasena" id="Contrasena" placeholder="1234"><br><br>
 
         <input type="submit" name="uploadBtn" value="Enviar">
     </form>
@@ -90,6 +90,50 @@
         overlay.style.opacity = scrollPercent.toFixed(2);
     });
 </script>
+
+<!-- Solicitud POST para añadir un nuevo usuario a la API -->
+    <script>
+        document.getElementById('registro').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const fileInput = form.FotoPerfil;
+            const file = fileInput.files[0];
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const data = {
+                    usr_name: form.Nombre.value,
+                    usr_email: form.Email.value,
+                    usr_pass: form.Contrasena.value,
+                    usr_tel: form.Telefono.value,
+                    imagen: event.target.result, // base64
+                    usr_apellido: form.Apellido.value,
+                    usr_fechanac: form.FechaNacimiento.value
+
+                };
+
+                console.log(JSON.stringify(data));
+
+                fetch('http://localhost/proyecto/landingPage-Login/API/api.php/usuarios', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Usuario registrado correctamente');
+                    location.reload();
+                })
+                .catch(error => {
+                    alert('Error al registrar usuario');
+                    console.error(error);
+                });
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
 
 </body>
 </html>

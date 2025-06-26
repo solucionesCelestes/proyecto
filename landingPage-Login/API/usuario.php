@@ -41,7 +41,7 @@ class Usuario
 	// Agregar un nuevo usuario
 	public function addUsuario($data)
 	{
-		if(!isset($data['Nombre']) || !isset($data['FotoPerfil']) || !isset($data['Email']) || !isset($data['Contrasena']) || !isset($data['Apellido']) || !isset($data['FechaNacimiento']) || !isset($data['Telefono']) || !isset($data['Admin']) || !isset($data['FechaRegistro'])) {
+		if(!isset($data['Nombre']) || !isset($data['FotoPerfil']) || !isset($data['Email']) || !isset($data['Contrasena']) || !isset($data['Apellido']) || !isset($data['FechaNacimiento']) || !isset($data['Telefono'])) {
 			http_response_code(400);
 			echo json_encode(["error" => "Datos incompletos"]);
 		}else{
@@ -50,9 +50,6 @@ class Usuario
 			$usr_apellido = $data['Apellido'];
 			$usr_fechanac = $data['FechaNacimiento'];
 			$usr_tel = $data['Telefono'];
-			$usr_accept = $data['Aceptado'];
-			$usr_admin = $data['Admin'];
-			$usr_fechareg = $data['FechaRegistro'];
 			$usr_pass = password_hash($data['Contrasena'], PASSWORD_DEFAULT);
 			// Procesar imagen base64
 			$img_data = $data['FotoPerfil'];
@@ -75,7 +72,7 @@ class Usuario
 				echo json_encode(["error" => "Formato de imagen inválido"]);
 				exit;
 			}
-			$query = "INSERT INTO usuario (Nombre, Email, Apellido, FechaNacimiento, Telefono, Aceptado, Admin, FechaRegistro, Contrasena, FotoPerfil) VALUES ('$usr_name', '$usr_email', '$usr_apellido', '$usr_fechanac', '$usr_tel', '$usr_accept', '$usr_admin', '$usr_fechareg', '$usr_pass', '$img_data')";
+			$query = "INSERT INTO usuario (Nombre, Email, Apellido, FechaNacimiento, Telefono, Aceptado, Admin, Contrasena, FotoPerfil) VALUES ('$usr_name', '$usr_email', '$usr_apellido', '$usr_fechanac', '$usr_tel', '0', '0', '$usr_pass', '$img_data')";
 			$result = mysqli_query($this->conn, $query);
 			if($result){
 				return true;
