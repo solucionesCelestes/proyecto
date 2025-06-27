@@ -39,9 +39,12 @@ switch ($method) {
 			if ($result === true) {
 				http_response_code(201);
 				echo json_encode(['success' => $result]);
-			}else{
+			}elseif($result === false) {
 				http_response_code(400);
 				echo json_encode(['error' => 'Datos incompletos o error al registrar usuario']);
+			}else{
+				http_response_code(400);
+				echo json_encode(['error' => $result]);
 			}
 		}elseif ($endpoint === '/login') {
 			$data = json_decode(file_get_contents('php://input'), true);

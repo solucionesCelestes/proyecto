@@ -87,10 +87,10 @@ a{
 }
 
 @keyframes cambiarFondo {
-    0%   { background-image: url('imgs/WhatsApp\ Image\ 2025-06-05\ at\ 13.53.09.jpeg'); }
-    33%  { background-image: url('imgs/WhatsApp\ Image\ 2025-06-05\ at\ 13.53.09\ \(1\).jpeg'); }
-    66%  { background-image: url('imgs/WhatsApp\ Image\ 2025-06-05\ at\ 13.53.09\ \(2\).jpeg'); }
-    100% { background-image: url('imgs/WhatsApp\ Image\ 2025-06-05\ at\ 13.53.09.jpeg'); }
+    0%   { background-image: url('imgs/4290_0.jpg'); }
+    33%  { background-image: url('imgs/4294_0.jpg'); }
+    66%  { background-image: url('imgs/decada-del-80.jpg'); }
+    100% { background-image: url('imgs/4290_0.jpg'); }
 }
 
 .contenido-principio {

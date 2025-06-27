@@ -41,9 +41,11 @@ class Usuario
 	// Agregar un nuevo usuario
 	public function addUsuario($data)
 	{
+		echo 'data';
+		print_r($data);
 		if(!isset($data['Nombre']) || !isset($data['FotoPerfil']) || !isset($data['Email']) || !isset($data['Contrasena']) || !isset($data['Apellido']) || !isset($data['FechaNacimiento']) || !isset($data['Telefono'])) {
 			http_response_code(400);
-			echo json_encode(["error" => "Datos incompletos"]);
+			return "Datos incompletos";
 		}else{
 			$usr_name = $data['Nombre'];
 			$usr_email = $data['Email'];
@@ -64,12 +66,12 @@ class Usuario
 				}
 				if (file_put_contents($img_path, $img_data) === false) {
 					http_response_code(500);
-					echo json_encode(["error" => "No se pudo guardar la imagen"]);
+					return "No se pudo guardar la imagen";
 					exit;
 				}
 			} else {
 				http_response_code(400);
-				echo json_encode(["error" => "Formato de imagen inválido"]);
+				return "Formato de imagen inválido";
 				exit;
 			}
 			$query = "INSERT INTO usuario (Nombre, Email, Apellido, FechaNacimiento, Telefono, Aceptado, Admin, Contrasena, FotoPerfil) VALUES ('$usr_name', '$usr_email', '$usr_apellido', '$usr_fechanac', '$usr_tel', '0', '0', '$usr_pass', '$img_data')";

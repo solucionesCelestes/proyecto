@@ -51,7 +51,7 @@
     <div class="info-3" id="registro">
         <article class="form-art-info">
 <h1>Solicitud para asociarse</h1><br><br>
-        <form id= "registro" method="POST" enctype="multipart/form-data">
+        <form id="registro" action="http://localhost/proyecto/proyecto/landingPage-Login/API/api.php/usuarios" method="POST" enctype="multipart/form-data">
         <label for="FotoPerfil">Foto de perfil</label><br>
         <input type="file" name="FotoPerfil"><br><br>
 
@@ -94,7 +94,7 @@
 <!-- Solicitud POST para añadir un nuevo usuario a la API -->
     <script>
         document.getElementById('registro').addEventListener('submit', function(e) {
-            e.preventDefault();
+            //e.preventDefault();
             const form = e.target;
             const fileInput = form.FotoPerfil;
             const file = fileInput.files[0];
@@ -102,19 +102,19 @@
             const reader = new FileReader();
             reader.onload = function(event) {
                 const data = {
-                    usr_name: form.Nombre.value,
-                    usr_email: form.Email.value,
-                    usr_pass: form.Contrasena.value,
-                    usr_tel: form.Telefono.value,
-                    imagen: event.target.result, // base64
-                    usr_apellido: form.Apellido.value,
-                    usr_fechanac: form.FechaNacimiento.value
+                    Nombre: form.Nombre.value,
+                    Email: form.Email.value,
+                    Contrasena: form.Contrasena.value,
+                    Telefono: form.Telefono.value,
+                    FotoPerfil: event.target.result, // base64
+                    Apellido: form.Apellido.value,
+                    FechaNacimiento: form.FechaNacimiento.value
 
                 };
 
                 console.log(JSON.stringify(data));
 
-                fetch('http://localhost/proyecto/landingPage-Login/API/api.php/usuarios', {
+                fetch('http://localhost/proyecto/proyecto/landingPage-Login/API/api.php/usuarios', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
