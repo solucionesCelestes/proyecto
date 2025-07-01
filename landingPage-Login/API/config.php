@@ -3,7 +3,7 @@
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'base_usuarios';
+$database = 'proyectobaseusuarios';
 // Establecer conexión a la base de datos
 $conn = mysqli_connect($hostname, $username, $password, $database);
 // Verificar la conexión
