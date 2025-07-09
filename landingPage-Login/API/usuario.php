@@ -74,7 +74,7 @@ class Usuario
 				return "Formato de imagen inválido";
 				exit;
 			}
-			$query = "INSERT INTO usuarios (Nombre, Email, Apellido, FechaNacimiento, Telefono, Aceptado, Admin, Contrasena, FotoPerfil) VALUES ('$usr_name', '$usr_email', '$usr_apellido', '$usr_fechanac', '$usr_tel', '0', '0', '$usr_pass', '$img_data')";
+			$query = "INSERT INTO usuarios (Nombre, Email, Apellido, FechaNacimiento, Telefono, Aceptado, Admin, Contrasena, FotoPerfil) VALUES ('$usr_name', '$usr_email', '$usr_apellido', '$usr_fechanac', '$usr_tel', '0', '0', '$usr_pass', '$img_path')";
 			$result = mysqli_query($this->conn, $query);
 			if($result){
 				return true;
