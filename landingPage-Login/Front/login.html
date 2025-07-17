@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRS - Iniciar Sesión</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <script src="../Front/script.js" defer></script>
 </head>
 <body>
     <header>
@@ -30,7 +30,7 @@
             <h1>Iniciar Sesión</h1>
             <p>Ingresa tus credenciales para acceder a tu cuenta</p>
             
-            <form id="InicioSesion" action="http://localhost/proyecto/proyecto/landingPage-Login/API/api.php/login" method="POST" class="auth-form">
+            <form id="InicioSesion" method="POST" class="auth-form">
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
                     <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
@@ -63,7 +63,8 @@
                 usr_email: form.email.value,
                 usr_pass: form.contrasenia.value
             };
-            fetch('http://localhost/proyecto/proyecto/landingPage-Login/API/api.php/login', {
+            console.log(JSON.stringify(data))
+            fetch('../API/api.php/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -74,7 +75,7 @@
             .then(data => {
                 if (data.success) {
                     alert('Inicio de sesión exitoso');
-                    // Redirigir a otra página o realizar otra acción
+                    location.href="iniciado.html";
                 } else {
                     alert('Error al iniciar sesión: ' + data.message);
                 }

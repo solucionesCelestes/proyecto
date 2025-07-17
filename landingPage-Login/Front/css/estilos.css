@@ -93,11 +93,11 @@ nav ul {
 }
 
 @keyframes cambiarFondo {
-  0%   { background-image: url('imgs/decada-del-80.jpg'); }
-  25%  { background-image: url('imgs/decada-del-80(2).jpg');}
-  50%  { background-image: url('imgs/decada-del-80(1).jpg'); }
-  75%  { background-image: url('imgs/decada-del-80(3).jpg'); }
-  100% { background-image: url('imgs/decada-del-80.jpg'); }
+  0%   { background-image: url('../imgs/decada-del-80.jpg'); }
+  25%  { background-image: url('../imgs/decada-del-80(2).jpg');}
+  50%  { background-image: url('../imgs/decada-del-80(1).jpg'); }
+  75%  { background-image: url('../imgs/decada-del-80(3).jpg'); }
+  100% { background-image: url('../imgs/decada-del-80.jpg'); }
 }
 
 .info-bloques {
@@ -506,7 +506,7 @@ nav ul {
   min-height: calc(100vh - 140px);       /* Altura restante entre header y footer */
   background-color: #f2f0c9;             /* Mismo fondo claro que el sitio */
   padding: 40px 20px;                    /* Espaciado general */
-  background-image: url('imgs/manospasto.jpg'); /* Ruta relativa o URL */
+  background-image: url('../imgs/manospasto.jpg'); /* Ruta relativa o URL */
   background-size: cover;     /* Ajusta para que cubra todo el fondo */
   background-position: center;/* Centra la imagen */
   background-repeat: no-repeat; /* No se repite */
