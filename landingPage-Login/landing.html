@@ -154,55 +154,43 @@
 </body>
 </html>
 <script>
-document.getElementById('registro').addEventListener('submit', async function(e) {
-  e.preventDefault();
+        document.getElementById('registro').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const fileInput = form.FotoPerfil;
+            const file = fileInput.files[0];
 
-  const form = e.target;
-  const fileInput = document.getElementById('FotoPerfil');
-  const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const data = {
+                    Nombre: form.Nombre.value,
+                    Apellido: form.Apellido.value,
+                    Email: form.Email.value,
+                    Contrasena: form.Contrasena.value,
+                    FechaNacimiento: form.FechaNacimiento.value,
+                    Telefono: form.Telefono.value,
+                    FotoPerfil: event.target.result // base64
+                };
 
-  if (!file) {
-    alert("Por favor, seleccioná una imagen.");
-    return;
-  }
+                console.log(JSON.stringify(data));
 
-  // Convertir imagen a base64
-  const toBase64 = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-
-  const base64Image = await toBase64(file);
-
-  // Crear el cuerpo para enviar
-  const data = {
-    Nombre: form.Nombre.value,
-    Apellido: form.Apellido.value,
-    FechaNacimiento: form.FechaNacimiento.value,
-    Telefono: form.Telefono.value,
-    Email: form.Email.value,
-    Contrasena: form.Contrasena.value,
-    FotoPerfil: base64Image
-  };
-
-  // Enviar al backend
-  const response = await fetch('config.php?accion=crear', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
-
-  const result = await response.text();
-
-  if (response.ok) {
-    alert("Registro exitoso");
-    // Redirigir o limpiar formulario
-  } else {
-    alert("Error: " + result);
-  }
-});
-</script>
+                fetch('http://localhost/proyecto/proyecto/landingPage-Login/API/api.php/usuarios', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Usuario registrado correctamente');
+                    location.reload();
+                })
+                .catch(error => {
+                    alert('Error al registrar usuario');
+                    console.error(error);
+                });
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
