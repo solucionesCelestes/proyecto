@@ -89,7 +89,7 @@ class Usuario
             $query = "INSERT INTO usuarios 
                 (Nombre, Email, Apellido, FechaNacimiento, Telefono, Aceptado, Admin, Contrasena, FotoPerfil)
                 VALUES 
-                ('$usr_name', '$usr_email', '$usr_apellido', '$usr_fechanac', '$usr_tel', '0', '0', '$usr_pass', '$rutaRelativa')";
+                ('$usr_name', '$usr_email', '$usr_apellido', '$usr_fechanac', '$usr_tel', '1', '0', '$usr_pass', '$rutaRelativa')";
 
             $result = mysqli_query($this->conn, $query);
             if ($result) {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRS - Sesion Iniciada</title>
+    <title>CRS - Administrador</title>
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
             .then(res => res.json())
             .then(usuario => {
                 const nombreCompleto = `${usuario.Nombre} ${usuario.Apellido}`;
-                document.getElementById('saludo').innerHTML = `Bienvenido, <strong>${nombreCompleto}</strong>`;
+                document.getElementById('saludo').innerHTML = `Bienvenido, Administrador <strong>${nombreCompleto}</strong>`;
             })
             .catch(err => {
                 console.error('Error al obtener usuario:', err);

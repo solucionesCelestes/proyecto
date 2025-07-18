@@ -55,34 +55,62 @@
 </body>
 </html>
 <!-- Solicitud POST para iniciar sesión con la API -->
-    <script>
-        document.getElementById('InicioSesion').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const data = {
-                usr_email: form.email.value,
-                usr_pass: form.contrasenia.value
-            };
-            console.log(JSON.stringify(data))
-            fetch('../API/api.php/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Inicio de sesión exitoso');
-                    location.href="iniciado.html";
-                } else {
-                    alert('Error al iniciar sesión: ' + data.message);
+<script>
+    document.getElementById('InicioSesion').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = {
+            usr_email: form.email.value,
+            usr_pass: form.contrasenia.value
+        };
+
+        fetch('../API/api.php/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Respuesta de login:", data);
+            if (data.success) {
+                const usuario = data.usuario;
+                const usuarioID = usuario.ID || usuario.id;
+                const aceptado = parseInt(usuario.Aceptado);
+                const admin = parseInt(usuario.Admin);
+
+                if (!usuarioID) {
+                    alert('Error: no se encontró ID del usuario');
+                    return;
                 }
-            })
-            .catch(error => {
-                alert('Error al iniciar sesión');
-                console.error(error);
-            });
+
+                localStorage.setItem('usuarioID', usuarioID);
+
+                // Lógica según estado
+                if (aceptado === 1 && admin === 0) {
+                    // Usuario común aceptado
+                    alert('Inicio de sesión exitoso');
+                    location.href = "iniciado.html";
+                } else if (aceptado === 0 && admin === 0) {
+                    // Usuario aún no aceptado
+                    alert('Su solicitud para asociarse todavía no ha sido aceptada.');
+                    localStorage.removeItem('usuarioID'); // opcional: limpiar si no lo vas a usar
+                } else if (aceptado === 1 && admin === 1) {
+                    // Usuario administrador
+                    alert('Inicio de sesión como administrador');
+                    location.href = "admin.html"; // Cambiá esto si tu clase de admins se llama distinto
+                } else {
+                    alert('Estado del usuario no reconocido.');
+                    localStorage.removeItem('usuarioID');
+                }
+            } else {
+                alert('Error al iniciar sesión: ' + data.error || data.message);
+            }
+        })
+        .catch(error => {
+            alert('Error al iniciar sesión');
+            console.error(error);
         });
-    </script>
+    });
+</script>
