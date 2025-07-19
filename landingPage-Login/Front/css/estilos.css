@@ -634,3 +634,107 @@ footer img {
 footer img:hover {
   transform: scale(1.05);
 }
+
+.admin-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #111;
+    color: white;
+    width: 220px;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar ul li.active a {
+    background-color: #333;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto;
+    background: #e0e0e0;
+}
+
+.solicitudes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.solicitud-card {
+    display: flex;
+    align-items: center;
+    background: #1e1e1e;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    gap: 20px;
+    transition: transform 0.5s ease;
+}
+
+.solicitud-card:hover {
+    transform: scale(1.01);
+}
+
+.foto-perfil {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.acciones {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn.aceptar {
+    background-color: #86b67f;
+    color: black;
+    transition: background-color 0.5s;
+}
+
+.btn.aceptar:hover {
+    background-color: #0f0;
+    color: white;
+}
+
+.btn.rechazar {
+    background-color: #faa58d;
+    color: black;
+    transition: background-color 0.5s;
+}
+
+.btn.rechazar:hover {
+    background-color: #f00;
+    color: white;
+}

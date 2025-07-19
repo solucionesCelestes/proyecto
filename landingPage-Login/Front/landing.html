@@ -96,7 +96,7 @@
     <form id="registro" enctype="multipart/form-data">
       <div class="form-group">
         <label for="FotoPerfil">Foto de perfil</label>
-        <input type="file" name="FotoPerfil" id="FotoPerfil" accept="image/*">
+        <input type="file" name="FotoPerfil" id="FotoPerfil" accept="image/*" required>
       </div>
 
       <div class="form-row">
@@ -174,7 +174,7 @@
 
                 console.log(JSON.stringify(data));
 
-                fetch('http://localhost/proyecto/proyecto/landingPage-Login/API/api.php/usuarios', {
+                fetch('../API/api.php/usuarios', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

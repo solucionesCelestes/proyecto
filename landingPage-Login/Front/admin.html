@@ -20,7 +20,25 @@
             <h2 id="saludo">Cargando...</h2>
         </div>
     </header>
-    
+    <div class="admin-container">
+    <aside class="sidebar">
+        <h3>ADMINISTRACIÓN</h3>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li class="active"><a href="#">Solicitudes</a></li>
+            <li><a href="#">Socios</a></li>
+            <li><a href="#">Comprobantes</a></li>
+            <li><a href="#">Avance Obras</a></li>
+            <li><a href="#">Reportes</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <h2>Solicitudes de Ingreso</h2>
+        <div id="solicitudes-container" class="solicitudes-grid">
+        </div>
+    </main>
+</div>
 </body>
 </html>
 <script>
@@ -40,4 +58,62 @@
                 document.getElementById('saludo').innerText = "Error al cargar el usuario.";
             });
     }
+    document.addEventListener('DOMContentLoaded', () => {
+    const solicitudesContainer = document.getElementById('solicitudes-container');
+
+    function cargarSolicitudes() {
+        fetch('../API/api.php/usuarios')
+            .then(res => res.json())
+            .then(usuarios => {
+                solicitudesContainer.innerHTML = ''; // limpiar
+
+                usuarios.filter(u => u.Aceptado == '0').forEach(usuario => {
+                    const card = document.createElement('div');
+                    card.classList.add('solicitud-card');
+
+                    card.innerHTML = `
+                        <img src="../API/${usuario.FotoPerfil}" class="foto-perfil" />
+                        <div>
+                            <strong>Nombre:</strong> ${usuario.Nombre}<br>
+                            <strong>Apellido:</strong> ${usuario.Apellido}<br>
+                            <strong>Email:</strong> ${usuario.Email}<br>
+                            <strong>Teléfono:</strong> ${usuario.Telefono}<br>
+                        </div>
+                        <div class="acciones">
+                            <button class="btn aceptar">Aceptar</button>
+                            <button class="btn rechazar">Rechazar</button>
+                        </div>
+                    `;
+
+                    // Botón ACEPTAR
+                    card.querySelector('.aceptar').addEventListener('click', () => {
+                        fetch(`../API/api.php/usuarios/${usuario.ID}`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ Aceptado: '1' })
+                        })
+                        .then(res => res.ok ? alert('Usuario aceptado!') : alert('Error'))
+                        .then(() => cargarSolicitudes());
+                    });
+
+                    // Botón RECHAZAR
+                    card.querySelector('.rechazar').addEventListener('click', () => {
+                        fetch(`../API/api.php/usuarios/${usuario.ID}`, {
+                            method: 'DELETE'
+                        })
+                        .then(res => res.ok ? alert('Usuario rechazado!') : alert('Error al eliminar'))
+                        .then(() => cargarSolicitudes());
+                    });
+
+                    solicitudesContainer.appendChild(card);
+                });
+
+                if (solicitudesContainer.innerHTML === '') {
+                    solicitudesContainer.innerHTML = '<p>No hay solicitudes pendientes.</p>';
+                }
+            });
+    }
+
+    cargarSolicitudes();
+});
 </script>
