@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-07-2025 a las 03:33:09
+-- Tiempo de generación: 24-07-2025 a las 17:52:48
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -46,12 +46,15 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `Aceptado`, `FotoPerfil`, `Nombre`, `Apellido`, `FechaNacimiento`, `Telefono`, `Email`, `Contrasena`, `Admin`, `FechaRegistro`) VALUES
-(17, 1, 'fotosPerfiles/68797b53564bd.jpeg', 'roberto', 'juarez', '2001-02-15', '000000000', '3344@gmail.com', '$2y$10$fbfPqdB5VroqABoPS9Phbu4yDhwglA4v.CAjUFS923AuOyx6.cIk2', 0, '2025-07-17 22:38:11'),
 (18, 1, 'fotosPerfiles/687abbdf5c76c.jpeg', 'Juan', 'Alberto', '1994-06-22', '094882301', 'JuanAlbertoGarcia@gmail.com', '$2y$10$2n2O7yckmdOyjcmR49E/x.u.Ogj0ZXQ6bisUNixVEzrbCVNP/nmo.', 1, '2025-07-18 21:25:51'),
-(19, 1, 'fotosPerfiles/687abf734d921.jpeg', 'Cristiano', 'Ronaldo', '1983-06-16', '000000001', 'Siuu@gmail.com', '$2y$10$xkwfK6A6DNGG1BnT3jFYrukC3jNUsmhi.qBjeKTqCG8iVP2JTfLxu', 0, '2025-07-18 21:41:07'),
-(20, 1, 'fotosPerfiles/687c1d19732b1.jpeg', 'Fermin', 'Puto', '2007-02-21', '092728187', 'horadeaventura@gmail.com', '$2y$10$Fp8JVhibm1GkHZ/Oo4uUce3c3OuJZK1wUYnA/l7KmJkMd7YuAbFQO', 0, '2025-07-19 22:32:57'),
-(22, 1, 'fotosPerfiles/687c2439503fe.jpeg', 'Tiago', 'Veras', '2006-09-21', '099564892', 'tiagovergas@gmail.com', '$2y$10$P9hpaD6/aJoUw97wfk8Lxu6kgYEbzmkDK0Xro7bOj2wnnazgfsMGa', 0, '2025-07-19 23:03:21'),
-(23, 1, 'fotosPerfiles/687c2871c2330.jpeg', 'Carlos', 'Rocha', '1978-09-03', '099999999', 'carlosrocha@gmail.com', '$2y$10$HidhYaHms8mLx15ZgkeBu.Q83.oVxTntYVJPEk9xjMRx6h2PXpKui', 0, '2025-07-19 23:21:21');
+(29, 1, 'fotosPerfiles/688247ddaddc5.jpeg', 'Jaime', 'Roos', '1953-11-12', '099674801', 'JaimeRoos@gmail.com', '$2y$10$YZ.TLEtZXJsirS2BzU6iWOaexcmBWqdpa1jicA8Hs62Paa3EZL7Py', 0, '2025-07-24 14:49:01'),
+(30, 1, 'fotosPerfiles/68824b3607801.jpeg', 'Richie', 'Silver', '1943-07-16', '092376522', 'RichieSilver@gmail.com', '$2y$10$5.Pa6ASu.IBD21ZMdZTYP.JBn7z0uUi0ubqk.qMFNmuP1Nw5p5XPa', 1, '2025-07-24 15:03:18'),
+(31, 1, 'fotosPerfiles/68824d3478773.jpeg', 'José', 'Mujica', '1935-05-20', '095620101', 'elpepemujica@gmail.com', '$2y$10$utRS8OVSfW7ru9edo.CJveZ/7crt9enZxJdHl4m0cTQagQsSQmURq', 0, '2025-07-24 15:11:48'),
+(32, 0, 'fotosPerfiles/68824e6a27c22.jpeg', 'Tiago', 'Veras', '2006-09-23', '092220906', 'tiagoveras@gmail.com', '$2y$10$km/71w3tyuPW.vaLXVcuuenUxPmfwcXvgfDUYMyozTjVMbJqdbjNu', 0, '2025-07-24 15:16:58'),
+(33, 0, 'fotosPerfiles/68824f73e7b68.webp', 'Guillermo', 'Díaz', '1993-05-09', '091485033', 'GuillermoDiaz1993@gmail.com', '$2y$10$OBs5/dRglmRbhoWORJ6rWOxNSVTBxIVLoc3JfnHYG.vC.dweQLKbq', 0, '2025-07-24 15:21:23'),
+(34, 0, 'fotosPerfiles/688250cd41fbd.webp', 'Emanuel', 'Ginóbili', '1977-07-28', '097928310', 'ManuGinobili20@gmail.com', '$2y$10$Mtkb/VuhRALEuCF9cu4wT.c9plkZXZxhwphJs2JrvD9SB7O7Bdn1W', 0, '2025-07-24 15:27:09'),
+(35, 1, 'fotosPerfiles/688253c781c7d.jpeg', 'Fermín', 'Santillan', '2007-02-20', '092728187', 'ferminsantillan633@gmail.com', '$2y$10$5RhUAkamFHjsdf1S0CIN1OoWkrzKJUWtKoZoWoelSmmOF1KFFzHoO', 0, '2025-07-24 15:39:51'),
+(36, 0, 'fotosPerfiles/6882562f3298f.jpeg', 'Santiago', 'Lima', '2002-10-09', '099112703', 'santicap@gmail.com', '$2y$10$WrtDSqFDqA07Yx2aHokwAOn3skyXWpNGpj5QBSdW1iY1ADKXi.Z3.', 0, '2025-07-24 15:50:07');
 
 --
 -- Índices para tablas volcadas
@@ -72,7 +75,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

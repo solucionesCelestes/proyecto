@@ -220,14 +220,14 @@ nav ul {
   display: flex; /* Coloca los elementos en fila */
   justify-content: space-between; /* Deja espacio entre los elementos */
   align-items: center; /* Centra los elementos verticalmente */
-  max-width: 900px; /* Ancho máximo del contenedor */
   margin: 10px auto; /* Margen superior e inferior, y centrado horizontal */
   padding: 20px; /* Espaciado interno */
   border-radius: 10px; /* Bordes redondeados */
   background-color: #f9f9f9; /* Fondo claro */
-  position: relative; /* Necesario para posicionar las flechas absolutamente dentro */
+  position: relative;  /*Necesario para posicionar las flechas absolutamente dentro */
   min-height: 200px;
-  min-width: 1100px;
+  max-width: 1100px;
+  width: 100%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.4); /* Sombra */
   transition: transform 0.3s ease;
 }
@@ -259,8 +259,8 @@ nav ul {
   padding: 0 10px; /* Espacio horizontal */
 }
 
-.arrow.left, .arrow.left1 { left: -40px; } /* Coloca la flecha izquierda a la izquierda del contenedor */
-.arrow.right, .arrow.right1 { right: -40px; } /* Coloca la flecha derecha a la derecha del contenedor */
+.arrow.left, .arrow.left1 { left: 0px;} /* Coloca la flecha izquierda a la izquierda del contenedor */
+.arrow.right, .arrow.right1 { right: 0px; } /* Coloca la flecha derecha a la derecha del contenedor */
 
 .arrow.left:hover {
   color: #faa58d; /* Cambia color de flecha al pasar el mouse */
@@ -283,6 +283,7 @@ nav ul {
   margin: 0 auto;                     /* Centrar horizontalmente */
   padding: 0 20px;                    /* Espaciado horizontal dentro del contenedor */
   max-width: 1100px;
+  width: 100%;
   min-height: 200px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.4); /* Sombra */
   position: relative;                 /* Para flechas con absolute */
@@ -334,11 +335,13 @@ nav ul {
 }
 
 .arrow.left1 {
-  left: -40px;
+  left: 0px;
+  color: white;
 }
 
 .arrow.right1 {
-  right: -40px;
+  right: 0px;
+  color: white;
 }
 
 .arrow.left1:hover {
@@ -348,6 +351,7 @@ nav ul {
 .arrow.right1:hover {
   color: #86b67f;
 }
+
 
 /* Contenedor de las dos columnas */
 .register-container {
